@@ -3,8 +3,7 @@
 
 using namespace std;
 
-void main()
-{
+void fun_2_2() {
 	int n, count = 0;
 	scanf_s("%d", &n, 1);
 
@@ -19,6 +18,11 @@ void main()
 	}
 
 	printf("%d\n", count);
-	printf("%d", INT_MAX);
+	//printf("%d", INT_MAX);
+}
+
+void main()
+{
+
 	system("pause");
 }
