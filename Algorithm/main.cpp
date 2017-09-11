@@ -3,7 +3,8 @@
 
 using namespace std;
 
-void fun_2_2() {
+void fun_2_2()  //存在乘法溢出的问题。
+{
 	int n, count = 0;
 	scanf_s("%d", &n, 1);
 
@@ -19,10 +20,28 @@ void fun_2_2() {
 
 	printf("%d\n", count);
 	//printf("%d", INT_MAX);
+}  
+
+void fun_2_3()
+{
+	int n, sum = 0;
+	scanf_s("%d", &n);
+
+	for (int i = 1; i <= n; i++)
+	{
+		int factorial = 1;
+		for (int j = 1; j <= i; j++)
+		{
+			factorial *= j;
+		}
+		sum += factorial;
+	}
+	printf("%d", sum % 1000000);
+
 }
 
 void main()
 {
-
+	fun_2_3();
 	system("pause");
 }
