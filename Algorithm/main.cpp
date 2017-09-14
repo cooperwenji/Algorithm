@@ -1,9 +1,13 @@
 #include<iostream>
 #include<stdio.h>
+#include<string.h>
 #include<time.h>
 
 #define LOCAL
 #define INF 1000000000
+#define MAXN 1000 + 10
+#define MAX 10
+
 using namespace std;
 
 void fun_2_2()  //存在乘法溢出的问题。
@@ -96,9 +100,78 @@ void fun_2_8()
 	printf("%d %d %.3lf\n", min, max, ((double)sum) / n);
 }
 
+void fun_2_9()
+{
+	double i;
+	for (i = 0; i != 10; i += 0.1)
+		printf("%.3lf\n", i);
+}
+
+int ice[MAXN];
+void fun_3_1()  //开灯问题
+{
+	int n, k;
+	int first = 1;
+	scanf_s("%d%d", &n, &k);
+	if (k > n || n > 1000)
+	{
+		printf("The k is larger than n");
+		return;
+	}
+
+	memset(ice, 0, n + 1);
+	for (int i = 1; i <= k; i++)
+	{
+		for (int j = 1; i*j <= n; j++)
+		{
+			if (ice[i*j] == 0)
+				ice[i*j] = 1;
+			else
+				ice[i*j] = 0;
+		}
+	}
+
+	for (int i = 1; i <= n; i++)
+	{
+		if (ice[i])
+		{
+			if (first)	first = 0;
+			else
+				printf(" ");
+			printf("%d", i);
+		}
+	}
+}
+
+int snake[MAX][MAX];
+void fun_3_3()   //蛇形填数
+{
+	memset(snake, 0, sizeof(snake));
+	int n, x, y;
+	scanf_s("%d", &n);
+	int value = 1;
+
+	snake[x = 0][y = n - 1] = value;
+	while (value < n*n)
+	{
+		while (x+1 < n && snake[x+1][y] == 0) { snake[++x][y] = ++value; }
+		while (y - 1 >= 0 && snake[x][y - 1] == 0) { snake[x][--y] = ++value; }
+		while (x - 1 >= 0 && snake[x - 1][y] == 0) { snake[--x][y] = ++value; }
+		while (y + 1 < n&&snake[x][y + 1] == 0) { snake[x][++y] = ++value; }
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			printf("%d ", snake[i][j]);
+		}
+		printf("\n");
+	}
+}
 
 void main()
 {
-	fun_2_8();
+	fun_3_3();
 	system("pause");
 }
