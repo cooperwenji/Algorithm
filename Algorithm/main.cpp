@@ -207,6 +207,7 @@ void fun_3_4()  //竖式问题
 
 char buf[LONGEST];
 char s[LONGEST];
+char p[LONGEST];
 void fun_3_5()  //最长回文字符串
 {
 	fgets(buf, sizeof(s), stdin);
@@ -214,22 +215,20 @@ void fun_3_5()  //最长回文字符串
 	int m = 0;
 	for (int i = 0; i < buf_len; i++)
 	{
-		if (isalpha(buf[i])) s[m++] = toupper(buf[i]);
-	}
-
-	int max = -1;
-	int k, ok;
-	for (int i = 0; i < m; i++)
-	{ 
-		for (int j = i; j < m; j++)
+		if (isalpha(buf[i]))
 		{
-			ok = 1;
-			for (k = i; k <= j; k++)
-				if (s[k] != s[i + j - k]) ok = 0;
-
-			if (ok && j - i + 1 > max) max = j - i + 1;
+			p[m] = i;
+			s[m++] = toupper(buf[i]);
 		}
 	}
+
+	int ok, max = -1;
+	
+	for (int i = 0; i < m; i++)
+	{
+		
+	}
+	
 
 }
 
