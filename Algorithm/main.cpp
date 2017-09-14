@@ -220,7 +220,7 @@ void fun_3_5()  //最长回文字符串
 	int max = -1;
 	int k, ok;
 	for (int i = 0; i < m; i++)
-	{
+	{ 
 		for (int j = i; j < m; j++)
 		{
 			ok = 1;
