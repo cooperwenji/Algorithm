@@ -157,7 +157,7 @@ void fun_3_3()   //ÉßĞÎÌîÊı
 		while (x+1 < n && snake[x+1][y] == 0) { snake[++x][y] = ++value; }
 		while (y - 1 >= 0 && snake[x][y - 1] == 0) { snake[x][--y] = ++value; }
 		while (x - 1 >= 0 && snake[x - 1][y] == 0) { snake[--x][y] = ++value; }
-		while (y + 1 < n&&snake[x][y + 1] == 0) { snake[x][++y] = ++value; }
+		while (y + 1 < n && snake[x][y + 1] == 0) { snake[x][++y] = ++value; }
 	}
 
 	for (int i = 0; i < n; i++)
