@@ -2,11 +2,13 @@
 #include<stdio.h>
 #include<string.h>
 #include<time.h>
+#include<ctype.h>
 
 #define LOCAL
 #define INF 1000000000
 #define MAXN 1000 + 10
 #define MAX 10
+#define LONGEST 5000 + 10
 
 using namespace std;
 
@@ -201,6 +203,34 @@ void fun_3_4()  //竖式问题
 		}
 	}
 	printf("The number of solutions = %d\n", count);
+}
+
+char buf[LONGEST];
+char s[LONGEST];
+void fun_3_5()  //最长回文字符串
+{
+	fgets(buf, sizeof(s), stdin);
+	int buf_len = strlen(buf);
+	int m = 0;
+	for (int i = 0; i < buf_len; i++)
+	{
+		if (isalpha(buf[i])) s[m++] = toupper(buf[i]);
+	}
+
+	int max = -1;
+	int k, ok;
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = i; j < m; j++)
+		{
+			ok = 1;
+			for (k = i; k <= j; k++)
+				if (s[k] != s[i + j - k]) ok = 0;
+
+			if (ok && j - i + 1 > max) max = j - i + 1;
+		}
+	}
+
 }
 
 void main()
