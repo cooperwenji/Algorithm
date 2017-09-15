@@ -223,17 +223,76 @@ void fun_3_5()  //最长回文字符串
 	}
 
 	int ok, max = -1;
-	
+	int x, y;
 	for (int i = 0; i < m; i++)
 	{
-		
+		for (int j = 0; i - j >= 0 && i + j < m; j++)
+		{
+			if (s[i - j] != s[i + j]) break;
+			if (2 * j + 1 > max)
+			{
+				max = 2 * j + 1;
+				x = p[i - j];
+				y = p[i + j];
+			}
+		}
+		for (int j = 0; i - j >= 0 && i + j + 1 < m; j++)
+		{
+			if (s[i - j] != s[i + j + 1]) break;
+			if (2 * j + 2 > max)
+			{
+				max = 2 * j + 1;
+				x = p[i - j];
+				y = p[i + j + 1];
+			}
+		}
+	}
+
+	for (int i = x; i <= y; i++)
+	{
+		printf("%c", buf[i]);
 	}
 	
 
 }
 
+int score[MAXN];
+int count[MAX];
+void practice_3_1()   //stat
+{
+	int num, ok, m = 0,  max = -1;
+	memset(score, 0, sizeof(score));
+	memset(::count, 0, sizeof(::count));
+	while (scanf_s("%d", &num) == 1)
+	{
+		score[num]++;
+	}
+	for (int i = 0; i <= 100; i++)
+	{
+		if (score[i] > max)
+		{
+			max = score[i];
+			::count[m = 0] = i;
+		}
+		else if (score[i] == max)
+		{
+			::count[++m] = i;
+		}
+	}
+
+	for (int i = 0; i <= m; i++)
+	{
+		printf("the maximun number showing in the list is %d\n", ::count[i]);
+	}
+}
+
+void practice_3_2()  //word
+{
+
+}
+
 void main()
 {
-	fun_3_4();
+	practice_3_1();
 	system("pause");
 }
