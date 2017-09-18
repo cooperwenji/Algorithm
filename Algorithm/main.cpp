@@ -227,7 +227,7 @@ void fun_3_5()
 		}
 	}
 
-	int ok, max = -1;
+	int max = -1;
 	int x, y;
 	for (int i = 0; i < m; i++)
 	{
@@ -266,7 +266,7 @@ int count[MAX];
 //分数统计
 void practice_3_1()   
 {
-	int num, ok, m = 0,  max = -1;
+	int num, m = 0,  max = -1;
 	memset(score, 0, sizeof(score));
 	memset(::count, 0, sizeof(::count));
 	while (scanf_s("%d", &num) == 1)
@@ -356,22 +356,107 @@ void practice_3_3()
 char calculator[HUNDRED];
 void practice_3_4()
 {
-	//method1
-	int operator_1 = -1, operator_2 = -1;
-	char operator_num;
+	//method 1
+	/*int middle;
 	fgets(calculator, HUNDRED - 1, stdin);
 
 	for (int i = 0; i < strlen(calculator); i++)
 	{
-
+		if (calculator[i] == '+' || calculator[i] == '-' || calculator[i] == '*')
+		{
+			middle = i;
+			break;
+		}
 	}
 
+	int num_1 = 0;
+	for (int i = 0; i < middle; i++)
+	{
+		if (calculator[i] == ' ')
+			continue;
+		num_1 = num_1 * 10 + calculator[i] - '0';
+	}
 
+	int num_2 = 0;
+	for (int i = middle + 1; i < strlen(calculator) - 1; i++)
+	{
+		if (calculator[i] == ' ')
+			continue;
+		num_2 = num_2 * 10 + calculator[i] - '0';
+	}
+
+	int result;
+	switch (calculator[middle])
+	{
+	case '-':result = num_1 - num_2; break;
+	case '+':result = num_1 + num_2; break;
+	case '*':result = num_1 * num_2; break;
+	default:break;
+	}
+
+	printf("%d", result);*/
+
+
+	//method 2
+	int a, b, result;
+	char operator_o;
+	scanf_s("%d", &a);
+	scanf_s("%c", &operator_o,1);
+	while (operator_o == ' ')
+		scanf_s("%c", &operator_o,1);
+	scanf_s("%d", &b);
+
+	switch (operator_o)
+	{
+	case '-':result = a - b; break;
+	case '+':result = a + b; break;
+	case '*':result = a*b; break;
+	default:break;
+	}
+	printf("%d", result);
 }
 
+//旋转
+char rotate[HUNDRED][HUNDRED];
+char result[MAX][MAX];
+void practice_3_5()
+{
+	int flag = 0, count = HUNDRED;
+	char member;
+	for (int i = 0; i < HUNDRED; i++)
+	{
+		if (i == count) break;
+		count = 0;
+		for (int j = 0; j < HUNDRED; j++)
+		{
+			scanf_s("%c", &member);
+			if (member == ' ')
+				continue;
+			else if (member >= 'a'&&member <= 'z')
+			{
+				::rotate[i][count++] = member;	
+			}
+			else if (member == '\n')
+			{
+				break;
+			}
+		}
+	}
+
+	for (int i = 0; i < count; i++)
+		for (int j = 0; j < count; j++)
+			result[count - j - 1][i] = ::rotate[i][j];
+
+	for (int i = 0; i < count; i++)
+	{
+		for (int j = 0; j < count; j++)
+			printf("%c ", result[i][j]);
+		printf("\n");
+	}
+}
 
 void main()
 {
-	practice_3_3();
+	practice_3_5();
 	system("pause");
 }
