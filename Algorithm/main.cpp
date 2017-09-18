@@ -7,6 +7,7 @@
 #define LOCAL
 #define INF 1000000000
 #define MAXN 1000 + 10
+#define HUNDRED 100 + 10
 #define MAX 10
 #define LONGEST 5000 + 10
 
@@ -286,13 +287,45 @@ void practice_3_1()   //stat
 	}
 }
 
+char word[MAXN];
 void practice_3_2()  //word
 {
+	int m = 0, count = 0, sum = 0;
+	bool flag = false;
+	char c;
+	while (1)
+	{
+		scanf_s("%c", &c, 1);
+		if (c == '\n' || c == EOF)
+			break;
+		word[m++] = c;
+	}
+	
+	for (int i = 0; i < m; i++)
+	{
+		if (isalpha(word[i]))
+		{
+			sum++;
+			flag = true;
+		}
+		else
+		{
+			if (flag)
+			{
+				count++;
+				flag = false;
+			}
+		}
+	}
+	if (flag)
+		count++;
+
+	printf("%d\n%d\n%.3f\n", sum, count, (sum*1.0) / count);
 
 }
 
 void main()
 {
-	practice_3_1();
+	practice_3_2();
 	system("pause");
 }
