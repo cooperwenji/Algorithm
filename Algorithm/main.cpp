@@ -421,6 +421,7 @@ char rotate[HUNDRED][HUNDRED];
 char result[MAX][MAX];
 void practice_3_5()
 {
+	//method 1
 	int flag = 0, count = HUNDRED;
 	char member;
 	for (int i = 0; i < HUNDRED; i++)
@@ -443,14 +444,10 @@ void practice_3_5()
 		}
 	}
 
-	for (int i = 0; i < count; i++)
-		for (int j = 0; j < count; j++)
-			result[count - j - 1][i] = ::rotate[i][j];
-
-	for (int i = 0; i < count; i++)
+	for (int j = count -1; j >= 0; j--)
 	{
-		for (int j = 0; j < count; j++)
-			printf("%c ", result[i][j]);
+		for (int i = 0; i < count; i++)
+			printf("%c ", ::rotate[i][j]);
 		printf("\n");
 	}
 }
