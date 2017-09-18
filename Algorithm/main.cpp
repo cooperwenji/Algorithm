@@ -111,7 +111,8 @@ void fun_2_9()
 }
 
 int ice[MAXN];
-void fun_3_1()  //开灯问题
+//开灯问题
+void fun_3_1()  
 {
 	int n, k;
 	int first = 1;
@@ -147,7 +148,8 @@ void fun_3_1()  //开灯问题
 }
 
 int snake[MAX][MAX];
-void fun_3_3()   //蛇形填数
+//蛇形填数
+void fun_3_3()   
 {
 	memset(snake, 0, sizeof(snake));
 	int n, x, y;
@@ -173,7 +175,8 @@ void fun_3_3()   //蛇形填数
 	}
 }
 
-void fun_3_4()  //竖式问题
+//竖式问题
+void fun_3_4()  
 {
 	char s[20], buf[99];
 	int abc, de, x, y, z, ok;
@@ -209,7 +212,8 @@ void fun_3_4()  //竖式问题
 char buf[LONGEST];
 char s[LONGEST];
 char p[LONGEST];
-void fun_3_5()  //最长回文字符串
+//最长回文字符串
+void fun_3_5()  
 {
 	fgets(buf, sizeof(s), stdin);
 	int buf_len = strlen(buf);
@@ -259,7 +263,8 @@ void fun_3_5()  //最长回文字符串
 
 int score[MAXN];
 int count[MAX];
-void practice_3_1()   //stat
+//分数统计
+void practice_3_1()   
 {
 	int num, ok, m = 0,  max = -1;
 	memset(score, 0, sizeof(score));
@@ -288,7 +293,8 @@ void practice_3_1()   //stat
 }
 
 char word[MAXN];
-void practice_3_2()  //word
+//单词的长度
+void practice_3_2()  
 {
 	int m = 0, count = 0, sum = 0;
 	bool flag = false;
@@ -324,8 +330,35 @@ void practice_3_2()  //word
 
 }
 
+//乘积的末3位
+char product[HUNDRED];
+void practice_3_3()
+{
+	int flag, sum = 1, tot = 0;
+	memset(product, 0, sizeof(product));
+	while (scanf_s("%s", product,HUNDRED-1) != EOF)
+	{
+		flag = 1;
+		tot = 0;
+		for (int i = 0; i < strlen(product); i++)
+		{
+			if (product[i] >= 'A'&&product[i] <= 'Z') break;
+			if (product[i] == '-')
+			{
+				flag = -1;
+				continue;
+			}
+			tot = tot * 10 + product[i] - '0';
+		}
+		tot *= flag;
+		sum *= tot;
+	}
+	printf("%.3d", sum % 1000);
+}
+
+
 void main()
 {
-	practice_3_2();
+	practice_3_3();
 	system("pause");
 }
