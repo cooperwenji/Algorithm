@@ -334,26 +334,39 @@ void practice_3_2()
 char product[HUNDRED];
 void practice_3_3()
 {
-	int flag, sum = 1, tot = 0;
-	memset(product, 0, sizeof(product));
-	while (scanf_s("%s", product,HUNDRED-1) != EOF)
+	int num, flag, sum = 1;
+	while (1)
 	{
-		flag = 1;
-		tot = 0;
-		for (int i = 0; i < strlen(product); i++)
+		flag = scanf_s("%d", &num);
+		if (flag == EOF) break;
+		if (flag == 1)
 		{
-			if (product[i] >= 'A'&&product[i] <= 'Z') break;
-			if (product[i] == '-')
-			{
-				flag = -1;
-				continue;
-			}
-			tot = tot * 10 + product[i] - '0';
+			sum *= num % 1000;
 		}
-		tot *= flag;
-		sum *= tot;
+		else
+		{
+			scanf_s("%s", product, HUNDRED-1);
+		}
 	}
-	printf("%.3d", sum % 1000);
+
+	printf("%.3d", sum);
+}
+
+//¼ÆËãÆ÷
+char calculator[HUNDRED];
+void practice_3_4()
+{
+	//method1
+	int operator_1 = -1, operator_2 = -1;
+	char operator_num;
+	fgets(calculator, HUNDRED - 1, stdin);
+
+	for (int i = 0; i < strlen(calculator); i++)
+	{
+
+	}
+
+
 }
 
 
