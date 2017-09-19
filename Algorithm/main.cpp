@@ -6,6 +6,7 @@
 #include<string.h>
 #include<time.h>
 #include<ctype.h>
+#include<assert.h>
 
 #define LOCAL
 #define INF 1000000000
@@ -536,8 +537,51 @@ void practice_3_8()
 	}*/
 }
 
+//组合数
+int f(int m)
+{
+	int result = 1;
+	for (int i = 1; i <= m; i++)
+	{
+		result *= i;
+	}
+	return result;
+}
+void fun_4_1()
+{
+	int m, n;
+	scanf_s("%d %d", &m, &n);
+	printf("%d\n", f(n) / (f(m)*f(n - m)));
+}
+
+//孪生素数
+bool prime_number(int n)
+{
+	int m;
+	assert(n >= 0);
+	if (n == 1) return false;
+	m = floor(sqrt(n) + 0.5); //
+	for (int i = 2; i <= m; i++)
+		if (n%i == 0)  return false;
+	return true;
+}
+void fun_4_2()
+{
+	int m;
+	scanf_s("%d", &m);
+	for (int i = m-2 ; i >= 3; i--)
+	{
+		if (prime_number(i)&& prime_number(i + 2))
+		{
+			printf("%d %d", i, i + 2);
+			break;
+		}
+	}
+
+}
+
 void main()
 {
-	practice_3_8();
+	fun_4_2();
 	system("pause");
 }
