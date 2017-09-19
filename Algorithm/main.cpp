@@ -580,8 +580,23 @@ void fun_4_2()
 
 }
 
+//指针变量交换
+void pointer_swap(int *a, int *b)
+{
+	int t = *a;
+	*a = *b;
+	*b = t;
+}
+void fun_4_5()
+{
+	int a, b;
+	scanf_s("%d %d", &a, &b);
+	pointer_swap(&a,&b);
+	printf("%d %d", a, b);
+}
+
 void main()
 {
-	fun_4_2();
+	fun_4_5();
 	system("pause");
 }
