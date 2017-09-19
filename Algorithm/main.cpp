@@ -1,3 +1,6 @@
+// Created by cooper on 2017/9/19
+// Copyright @ 2017 cooper.
+
 #include<iostream>
 #include<stdio.h>
 #include<string.h>
@@ -487,13 +490,54 @@ void practice_3_7()
 }
 
 //手机键盘
+int keyboard[HUNDRED];
+char english_word[HUNDRED];
+char output_word[HUNDRED];
 void practice_3_8()
 {
+	//method 1   自己
+	int index = 0;
+	//初始化
+	for (int i = 0; i < 26; i++)
+	{
+		if ((i >= 0 && i <= 14) || (i >= 19 && i <= 21))
+			keyboard[i] = i % 3 + 1;
+		else if ((i >= 15 && i <= 18))
+			keyboard[i] = (i - 15) % 4 + 1;
+		else if (i >= 22 && i <= 25)
+			keyboard[i] = (i - 22) % 4 + 1;
+	}
 
+	scanf_s("%s", english_word, HUNDRED-1);
+	//printf("%s", english_word);
+	for (int i = 0; i < strlen(english_word); i++)
+	{
+		output_word[index++] = english_word[i];
+		output_word[index++] = keyboard[english_word[i] - 'a'] + '0';
+	}
+
+	for (int i = 0; i < index; i++)
+		printf("%c", output_word[i]);
+
+	//method 2  网上
+/*	char word[MAXN], *p, *keyBd[8] = { "abc","def","ghi","jkl","mno","pqrs","tuv","wxyz" };
+	int i, j, len;
+	fgets(word, sizeof(word), stdin);
+	len = strlen(word);
+	for (i = 0; i<len; i++)
+	{
+		for (j = 0; j<8; j++)
+		{
+			if (p = strchr(keyBd[j], word[i]))
+			{
+				printf("%c%d", word[i], p - keyBd[j] + 1);
+			}
+		}
+	}*/
 }
 
 void main()
 {
-	practice_3_7();
+	practice_3_8();
 	system("pause");
 }
