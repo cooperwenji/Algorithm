@@ -470,9 +470,30 @@ void practice_3_6()
 		printf("%c", base1[i]);
 }
 
+//进制转换2
+void practice_3_7()
+{
+	int n, b, last, result = 0, i = 0;
+	scanf_s("%d %d", &b, &n);
+	if (n == 0)
+		printf("%d", n);
+	while (n != 0)
+	{
+		last = n % 10;
+		n /= 10;
+		result += last*pow(b, i++);
+	}
+	printf("%d\n", result);
+}
+
+//手机键盘
+void practice_3_8()
+{
+
+}
 
 void main()
 {
-	practice_3_6();
+	practice_3_7();
 	system("pause");
 }
