@@ -452,8 +452,27 @@ void practice_3_5()
 	}
 }
 
+//½øÖÆ×ª»»1
+char base1[HUNDRED];
+void practice_3_6()
+{
+	int out, m = 0;
+	int b, n;
+	scanf_s("%d %d", &b, &n);
+	char c;
+	while (n != 0)
+	{
+		out = n % b;
+		n = n / b;
+		base1[m++] = out + '0';
+	}
+	for (int i = strlen(base1)-1; i >=0 ; i--)
+		printf("%c", base1[i]);
+}
+
+
 void main()
 {
-	practice_3_5();
+	practice_3_6();
 	system("pause");
 }
