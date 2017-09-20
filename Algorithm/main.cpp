@@ -673,8 +673,36 @@ void fun_5_4()
 	}
 }
 
+//阶乘的精确值
+const int maxn = 3000;
+int factorial[maxn];
+void fun_5_5()
+{
+	int n;
+	scanf_s("%d", &n);
+	memset(factorial, 0, maxn);
+
+	factorial[0] = 1;
+	int s, c;
+	for (int i = 2; i <= n; i++)
+	{
+		c = 0;
+		for (int j = 0; j < maxn; j++)
+		{
+			s = factorial[j] * i + c;
+			factorial[j] = s % 10;
+			c = s / 10;
+		}
+	}
+
+	int i;
+	for (i = maxn - 1; i >= 0; i--) if (factorial[i]) break;
+	for (int j = i; j >= 0; j--) printf("%d", factorial[j]);
+	printf("\n");
+}
+
 void main()
 {
-	fun_5_4();
+	fun_5_5();
 	system("pause");
 }
