@@ -595,8 +595,45 @@ void fun_4_5()
 	printf("%d %d", a, b);
 }
 
+//WERTYU
+void fun_5_1()
+{
+	char* key = "'1234567890-=QWERTYUIOP[]\\ASDFGHJKL;'ZXCVBNM,./";
+	char c;
+	int i;
+	while ((c = getchar()) != EOF)
+	{
+		for (i = 0; key[i] && key[i] != c; i++);
+		if (key[i])  putchar(key[i - 1]);
+		else putchar(c);
+	}
+}
+
+//TeXÀ¨ºÅ
+void fun_5_2()
+{
+	int i = 0,flag = 1;
+	char c;
+	while ((c = getchar()) != EOF)
+	{
+		if (c == '"') 
+		{
+			printf("%s", flag ? "``" : "''"); 
+			flag = !flag;
+		}
+		else
+			printf("%c", c);
+	}
+}
+
+//ÖÜÆÚ´®
+void fun_5_3()
+{
+
+}
+
 void main()
 {
-	fun_4_5();
+	fun_5_2();
 	system("pause");
 }
