@@ -655,8 +655,26 @@ void fun_5_3()
 	}
 }
 
+//小学生算数
+void fun_5_4()
+{
+	int a, b;
+	while (scanf_s("%d %d", &a, &b) == 2)
+	{
+		if (!a && !b)  return;
+		int c = 0, ans = 0;
+		for (int i = 9; i >= 0; i--)
+		{
+			c = (a % 10 + b % 10 + c) > 9 ? 1 : 0;
+			ans += c;
+			a /= 10, b /= 10;
+		}
+		printf("%d\n", ans);
+	}
+}
+
 void main()
 {
-	fun_5_2();
+	fun_5_4();
 	system("pause");
 }
