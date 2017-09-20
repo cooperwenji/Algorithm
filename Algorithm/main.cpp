@@ -17,6 +17,7 @@
 
 using namespace std;
 
+#pragma region function 
 void fun_2_2()  //存在乘法溢出的问题。
 {
 	int n, count = 0;
@@ -626,10 +627,32 @@ void fun_5_2()
 	}
 }
 
+#pragma endregion
 //周期串
+char duplicate_word[HUNDRED];
 void fun_5_3()
 {
-
+	scanf_s("%s", duplicate_word, HUNDRED - 1);
+	int len = strlen(duplicate_word);
+	for (int i = 1; i <= len; i++)
+	{
+		if (len%i == 0)
+		{
+			int ok = 1;
+			for (int j = i; j < len; j++)
+			{
+				if (duplicate_word[j] != duplicate_word[j%i])
+				{
+					ok = 0;
+					break;
+				}
+			}
+			if (ok)
+			{
+				printf("%d\n", i); break;
+			}
+		}
+	}
 }
 
 void main()
