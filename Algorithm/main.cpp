@@ -4,6 +4,7 @@
 #include<iostream>
 #include<stdio.h>
 #include<string.h>
+#include<string>
 #include<time.h>
 #include<ctype.h>
 #include<assert.h>
@@ -701,8 +702,17 @@ void fun_5_5()
 	printf("\n");
 }
 
+
+//高精度运算类bign
+const int big_maxn = 1000;
+struct bign
+{
+	int len, s[big_maxn];
+	bign() { memset(s, 0, sizeof(s)); len = 1; }
+};
+
 void main()
 {
-	fun_5_5();
+	
 	system("pause");
 }
