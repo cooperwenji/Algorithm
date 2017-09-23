@@ -1,10 +1,7 @@
 #ifndef ALGORITHM_TOOL
 #define ALGORITHM_TOOL
 
-int max(int a, int b)
-{
-	return a > b ? a : b;
-}
+int max_int(int a, int b);
 
 #endif // !ALGORITHM_TOOL
 

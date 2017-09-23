@@ -110,6 +110,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="algorithm_tool.cpp" />
     <ClCompile Include="bign.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

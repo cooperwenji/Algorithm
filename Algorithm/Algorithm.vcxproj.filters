@@ -21,6 +21,9 @@
     <ClCompile Include="bign.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="algorithm_tool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bign.h">

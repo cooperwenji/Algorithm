@@ -711,6 +711,7 @@ void fun_5_5()
 void main()
 {
 	bign a(12), b(5), c;
-	cout <<  (b-a).str()<< endl;
+	c = b - a;
+	cout << c.str() << endl;
 	system("pause");
 }
