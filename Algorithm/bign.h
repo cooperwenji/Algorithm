@@ -5,10 +5,13 @@
 #include<string.h>
 #include<string>
 
+#include"algorithm_tool.h"
+
+
 const int maxn = 1000;
-struct bign
+class bign
 {
-	int len, s[maxn];
+public:
 	bign() { memset(s, 0, sizeof(s)); len = 1; }
 
 	bign operator = (const char* num)
@@ -21,20 +24,57 @@ struct bign
 	bign operator = (int num)
 	{
 		char s[maxn];
-		sprintf(s, "%d", num);
+		sprintf_s(s, "%d", num);
 		*this = s;
 		return *this;
 	}
+	bign operator = (const bign& b)
+	{
+
+	}
+
 
 	bign(int num) { *this = num; };
 	bign(const char* num) { *this = num; }
+
 	bign operator+ (const bign& b)const
 	{
 		bign c;
 		c.len = 0;
+		
+		for (int i = 0, g = 0; g || i < max(len,b.len) ; i++)
+		{
+			int x = g;
+			if (i < len) x += s[i];
+			if (i < b.len) x += b.s[i];
+			c.s[c.len++] = x % 10;
+			g = x / 10;
+		}
 
+		return c;
 	}
-
+	bign operator+= (const bign& b)
+	{
+		*this = *this + b;
+		return *this;
+	}
+	bign operator- (const bign& b)const
+	{
+		bign c;  c.len = 0;
+		for (int i = 0, g = 0; i < len; i++)
+		{
+			int x = s[i] - g;
+			if (i < b.len) x = x - b.s[i];
+			if (x >= 0) g = 0;
+			else
+			{
+				g = 1;
+				x += 10;
+			}
+			c.s[c.len++] = x;
+		}
+		return c;
+	}
 	
 	std::string str() const
 	{
@@ -43,6 +83,11 @@ struct bign
 		if (res == "") res = "0";
 		return res;
 	}
+
+	int len;
+	int s[maxn];
+private:
+	
 };
 
 std::istream& operator >> (std::istream&in, bign& x)

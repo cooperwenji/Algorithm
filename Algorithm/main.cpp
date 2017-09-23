@@ -9,6 +9,8 @@
 #include<ctype.h>
 #include<assert.h>
 
+#include"bign.h"
+
 #define LOCAL
 #define INF 1000000000
 #define MAXN 1000 + 10
@@ -675,8 +677,8 @@ void fun_5_4()
 }
 
 //阶乘的精确值
-const int maxn = 3000;
-int factorial[maxn];
+const int maxn_f = 3000;
+int factorial[maxn_f];
 void fun_5_5()
 {
 	int n;
@@ -704,15 +706,11 @@ void fun_5_5()
 
 
 //高精度运算类bign
-const int big_maxn = 1000;
-struct bign
-{
-	int len, s[big_maxn];
-	bign() { memset(s, 0, sizeof(s)); len = 1; }
-};
+
 
 void main()
 {
-	
+	bign a(12), b(5), c;
+	cout <<  (b-a).str()<< endl;
 	system("pause");
 }
