@@ -710,8 +710,9 @@ void fun_5_5()
 
 void main()
 {
-	bign a(12), b(5), c;
-	c = b - a;
+	bign a(25675), b(5), c;
+	c = a - b;
+	cout << c.len << endl;
 	cout << c.str() << endl;
 	system("pause");
-}
+}  

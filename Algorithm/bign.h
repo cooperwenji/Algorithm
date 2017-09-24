@@ -9,7 +9,7 @@
 #include"algorithm_tool.h"
 
 const int maxn = 1000;
-class bign
+class bign               //暂时没处理符号的问题
 {
 public:
 	bign();
@@ -23,12 +23,14 @@ public:
 	bign operator+ (const bign& b)const;
 	bign operator+= (const bign& b);
 	bign operator- (const bign& b)const;
+	bign operator* (const)
 
 	std::string str() const;
 
-private:
 	int len;
 	int symbol;
 	int s[maxn];
+private:
+	
 };
 #endif // !BIGN_H

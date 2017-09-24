@@ -66,10 +66,10 @@ bign bign::operator- (const bign& b)const
 		ok = -1;
 	}
 
-	for (int i = 0, g = 0; g || i < opera_b.len; i++)
+	for (int i = 0, g = 0; i < opera_a.len; i++)
 	{
 		int x = opera_a.s[i] - g;
-		x -= opera_b.s[i];
+		if (i < opera_b.len) x -= opera_b.s[i];
 		if (x >= 0) g = 0;
 		else
 		{
