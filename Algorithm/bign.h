@@ -23,14 +23,20 @@ public:
 	bign operator+ (const bign& b)const;
 	bign operator+= (const bign& b);
 	bign operator- (const bign& b)const;
-	bign operator* (const)
+	bign operator* (const bign& b)const;
+
+	bool operator <(const bign& b)const;
+	bool operator >(const bign& b)const;
+	bool operator <=(const bign& b)const;
+	bool operator >=(const bign& b)const;
+	bool operator !=(const bign& b)const;
+	bool operator ==(const bign& b)const;
 
 	std::string str() const;
 
+private:
 	int len;
 	int symbol;
 	int s[maxn];
-private:
-	
 };
 #endif // !BIGN_H

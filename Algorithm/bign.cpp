@@ -105,6 +105,78 @@ bign bign::operator+ (const bign& b)const
 	return c;
 }
 
+bign bign::operator* (const bign& b)const
+{
+	//method 1 自己写
+	bign* b_arrary = new bign[b.len];
+	bign temp(0);
+	for (int i = 0; i < b.len; i++)
+	{
+		int x, c = 0;
+		b_arrary[i].len = 0;
+		for (int z = 0; z < i; z++)
+			b_arrary[i].s[b_arrary[i].len++] = 0;
+		for (int j = 0; j < len; j++)
+		{
+			x = s[j] * b.s[i] + c;
+			b_arrary[i].s[b_arrary[i].len++] = x % 10;
+			c = x / 10;
+		}
+		if(c>0) b_arrary[i].s[b_arrary[i].len++] = c;
+		//std::cout << b_arrary[i].str() << std::endl;
+		temp += b_arrary[i];
+	}
+	delete[] b_arrary;
+	return temp;
+
+	//method 2 网上
+/*	bign c; c.len = len + b.len;                   //这个方法是（0，0）位置相乘的结果在0，（1，0）相乘的结果在1
+	for (int i = 0; i < len; i++)                  //（0，1）相乘的结果也在1，随后将这些结果累加，取余为该位置的结果，
+		for (int j = 0; j < b.len; j++)            //除以10作为进量给下一位置相加。
+			c.s[i + j] += s[i] * b.s[j];
+	for (int k = 0; k < c.len - 1; k++) {
+		c.s[k + 1] += c.s[k] / 10;
+		c.s[k] %= 10;
+	}
+	return c;*/
+}
+
+bool bign::operator <(const bign& b)const 
+{
+	if (len != b.len) return len < b.len;
+	for (int i = len - 1; i >= 0; i--)
+		if (s[i] != b.s[i]) return s[i] < b.s[i];
+	return false;
+}
+
+bool bign::operator >(const bign& b)const
+{
+	return b < *this;
+}
+
+bool bign::operator<=(const bign& b)const
+{
+	return !(b < *this);
+}
+
+bool bign::operator>=(const bign& b)const
+{
+	return !(*this < b);
+}
+
+bool bign::operator==(const bign& b)const
+{
+	return (b >= *this) && (b <= *this);
+}
+
+bool bign::operator!=(const bign& b)const
+{
+	return b > *this || b < *this;
+}
+
+
+
+
 
 std::istream& operator >> (std::istream&in, bign& x)
 {
