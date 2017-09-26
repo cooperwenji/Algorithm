@@ -705,8 +705,6 @@ void fun_5_5()
 }
 
 
-//高精度运算类bign
-
 
 void main()
 {

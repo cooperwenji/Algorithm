@@ -8,6 +8,7 @@
 
 #include"algorithm_tool.h"
 
+//高精度运算类bign;
 const int maxn = 1000;
 class bign               //暂时没处理符号的问题
 {
