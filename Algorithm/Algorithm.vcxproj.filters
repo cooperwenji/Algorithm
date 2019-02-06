@@ -24,6 +24,9 @@
     <ClCompile Include="algorithm_tool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="最接近原点的 K 个点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bign.h">
